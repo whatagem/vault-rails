@@ -264,7 +264,7 @@ module Vault
         # Only persist changed attributes to minimize requests - this helps
         # minimize the number of requests to Vault.
         if ActiveRecord.gem_version >= Gem::Version.new("5.2")
-          return unless previous_changes_include?(attribute)
+          return unless previous_changes.include?(attribute)
         elsif ActiveRecord.gem_version >= Gem::Version.new("5.1")
           return unless saved_change_to_attribute?(attribute.to_s)
         else
