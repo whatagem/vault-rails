@@ -70,7 +70,7 @@ module Vault
 
         # Setter
         define_method("#{attribute}=") do |value|
-          self.__vault_load_attributes!(attribute) unless @__vault_loaded && @vault_setter_decrypt
+          self.__vault_load_attributes!(attribute) if !@__vault_loaded && @vault_setter_decrypt
 
           # We always set it as changed without comparing with the current value
           # because we allow our held values to be mutated, so we need to assume
